@@ -2,20 +2,33 @@
 import { useState } from 'react';
 // import axios from 'axios'
 
+import { useFeedback } from '../../Mocking/FeedbackContext';
+
 function FeedbackForm() {
+
+  //? Mock data to be deleted later
+  const { addFeedback } = useFeedback();
 
   const [newFeedback, setNewFeedback] = useState({ memberId: '', providerName: '', rating: 0, comment: '' })
 
-  const submitFeedback = async (event) => {
-    event.preventDefault();
+  //!This is for actual functionality
+  // const submitFeedback = async (event) => {
+  //   event.preventDefault();
 
-    try {
-      const response = await axios.post('/api/feedback', newFeedback);
-      console.log("Feedback submitted: ", response.data)
-    } catch (err) {
-      console.log("Error Submitting Feedback", err)
-    }
-  }
+  //   try {
+  //     const response = await axios.post('/api/feedback', newFeedback);
+  //     console.log("Feedback submitted: ", response.data)
+  //   } catch (err) {
+  //     console.log("Error Submitting Feedback", err)
+  //   }
+  // }
+
+    const submitFeedback = (e) => {
+    e.preventDefault();
+     console.log("🧪 addFeedback called (mock mode)", newFeedback);
+    addFeedback(newFeedback); // adds to global state
+    setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
+  };
 
 
   return (

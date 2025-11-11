@@ -1,4 +1,4 @@
-import FeedbackForm from "../../components/FeedbackForm/FeedbackFrom";
+import FeedbackForm from "../../components/FeedbackForm/FeedbackForm";
 
 function SubmitFeedbackPage( ) {
   
