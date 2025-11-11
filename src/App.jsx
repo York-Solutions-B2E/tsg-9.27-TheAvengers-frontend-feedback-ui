@@ -11,12 +11,9 @@ function App() {
     <div className='_template'>
       <h1>Give us your feedback!</h1>
       <Nav/>
-      {/* <SubmitFeedbackPage />
-      <MyFeedbackPage /> */}
            <Routes>
                 <Route path="/feedbackForm" element={<SubmitFeedbackPage />} />
-                <Route path="/feedbackList" element={<MyFeedbackPage />} />
-                
+                <Route path="/feedbackList" element={<MyFeedbackPage />} />               
             </Routes>
     </div>
   )
