@@ -1,0 +1,1 @@
+Created seperate folders for each component to make it easier to manange potentail css additions.
