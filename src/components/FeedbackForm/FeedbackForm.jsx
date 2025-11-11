@@ -10,6 +10,7 @@ function FeedbackForm() {
   const { addFeedback } = useFeedback();
 
   const [newFeedback, setNewFeedback] = useState({ memberId: '', providerName: '', rating: 0, comment: '' })
+  const [errors, setErrors] = useState({});
 
   //!This is for actual functionality
   // const submitFeedback = async (event) => {
@@ -23,11 +24,38 @@ function FeedbackForm() {
   //   }
   // }
 
-    const submitFeedback = (e) => {
-    e.preventDefault();
-     console.log("🧪 addFeedback called (mock mode)", newFeedback);
-    addFeedback(newFeedback); // adds to global state
+   
+  const validate = () => {
+    const errs = {};
+
+    if (!newFeedback.memberId.trim()) {
+      errs.memberId = 'Member ID is required';
+    } else if (newFeedback.memberId.length > 36) {
+      errs.memberId = 'Member ID cannot exceed 36 characters';
+    } else if (!newFeedback.providerName.trim()){
+      errs.providerName = "Provider name required.";
+    } else if (newFeedback.providerName.length > 80 ){
+      errs.providerName = "Provider name too long.";
+    } 
+    // else if (!Number.isInteger(newFeedback) || newFeedback.rating < 1 || newFeedback.rating > 5){
+    //   errs.rating = "Rating must be a number between 1 and 5."
+    // }
+
+    return errs;
+  };
+
+  const submitFeedback = (event) => {
+    event.preventDefault();
+
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return; // stop submission
+    }
+
+    addFeedback(newFeedback); // your global array function
     setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
+    setErrors({});
   };
 
 
