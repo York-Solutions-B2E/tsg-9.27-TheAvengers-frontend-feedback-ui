@@ -7,9 +7,10 @@ import { useFeedback } from '../../Mocking/FeedbackContext';
 function FeedbackForm() {
 
   //? Mock data to be deleted later
+
   const { addFeedback } = useFeedback();
 
-  const [newFeedback, setNewFeedback] = useState({ memberId: '', providerName: '', rating: 0, comment: '' })
+  const [newFeedback, setNewFeedback] = useState({ memberId: '', providerName: '', rating: '', comment: '' })
   const [errors, setErrors] = useState({});
 
   //!This is for actual functionality
@@ -23,7 +24,6 @@ function FeedbackForm() {
   //     console.log("Error Submitting Feedback", err)
   //   }
   // }
-
    
   const validate = () => {
     const errs = {};
@@ -36,11 +36,15 @@ function FeedbackForm() {
       errs.providerName = "Provider name required.";
     } else if (newFeedback.providerName.length > 80 ){
       errs.providerName = "Provider name too long.";
-    } 
-    // else if (!Number.isInteger(newFeedback) || newFeedback.rating < 1 || newFeedback.rating > 5){
-    //   errs.rating = "Rating must be a number between 1 and 5."
-    // }
-
+    } else if (!newFeedback.rating > 0){
+      errs.rating = "Please enter a rating"
+    } else if (newFeedback.rating > 5 ){
+      errs.rating = "Rating out of range"  
+    } else if (!newFeedback.comment.trim()){
+      errs.comment = "Please enter your comment"
+    } else if (newFeedback.comment.length > 200){
+      errs.comment = "Comment length too long"
+    }
     return errs;
   };
 
@@ -76,9 +80,9 @@ function FeedbackForm() {
         />
         <input
           type='number'
-          placeholder='Rating'
+          placeholder='Rating from 1-5'
           value={newFeedback.rating}
-          onChange={(e) => setNewFeedback({ ...newFeedback, rating: Number(e.target.value) })}
+          onChange={(e) => setNewFeedback({ ...newFeedback, rating: e.target.value ? Number(e.target.value) : "" })}
         />
         <input
           type='text'
@@ -88,6 +92,10 @@ function FeedbackForm() {
         />
         <button type="submit">Submit</button>
       </form>
+      {errors.memberId && <p style={{ color: 'red' }}>{errors.memberId}</p>}
+      {errors.providerName && <p style={{ color: 'red' }}>{errors.providerName}</p>}
+      {errors.rating && <p style={{ color: 'red' }}>{errors.rating}</p>}
+      {errors.comment && <p style={{ color: 'red' }}>{errors.comment}</p>}     
     </div>
   );
 }
