@@ -28,6 +28,7 @@ function FeedbackByMemberId() {
   //   }
   // };
  
+  //! code for mocking
   const { getFeedbackByMemberId } = useFeedback();
   const handleSearch = (event) => {
     event.preventDefault();
@@ -45,6 +46,7 @@ function FeedbackByMemberId() {
 
   return (
     <div className='FeedbackByMemberId'>
+       <h2>Find feedback by Member ID</h2>
       <form onSubmit={handleSearch}>
         <input
           type="text"
