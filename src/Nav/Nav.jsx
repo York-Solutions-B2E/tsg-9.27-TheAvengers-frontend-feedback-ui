@@ -13,6 +13,9 @@ function Nav() {
         <NavLink to="/feedbackByIdPage" className="nav-button">
         Feedback by Id
       </NavLink>
+        <NavLink to="/feedbackByMemberPage" className="nav-button">
+        Feedback by Member Id
+      </NavLink>     
     </div>
   );
 }

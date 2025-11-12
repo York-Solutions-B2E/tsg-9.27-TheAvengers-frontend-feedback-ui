@@ -7,6 +7,7 @@ import SubmitFeedbackPage from './pages/SubmitFeedbackPage/SubmitFeedbackPage'
 import FeedbackListPage from './pages/FeedbackListPage/FeedbackListPage';
 import Nav from './Nav/Nav'
 import FeedbackByIdPage from './pages/FeedbackByIdPage/FeedbackByIdPage';
+import FeedbackByMemberPage from './pages/FeedbackByMemberPage/FeedbackByMemberPage';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/feedbackForm" element={<SubmitFeedbackPage />} />
         <Route path="/feedbackList" element={<FeedbackListPage />} />
         <Route path="/feedbackByIdPage" element={<FeedbackByIdPage />} />
+         <Route path="/feedbackByMemberPage" element={<FeedbackByMemberPage />} />
       </Routes>
     </div>
   )

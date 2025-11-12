@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios'
 
 function FeedbackById( ) {
-    const { feedbackList } = useFeedback();
+    
   const [feedbackId, setFeedbackId] = useState('');
   const [feedback, setFeedback] = useState(null);
   const [error, setError] = useState('');
@@ -25,7 +25,8 @@ function FeedbackById( ) {
   //   }
   // }
   
-  //! code for mocking
+  // //! code for mocking
+  const { feedbackList } = useFeedback();
     const handleSearch = (e) => {
     e.preventDefault();
     setError('');
@@ -46,13 +47,13 @@ function FeedbackById( ) {
       <form onSubmit={handleSearch}>
         <input
         type="text" 
-        placeholder='Enter a member ID'
+        placeholder='Enter a feedback ID'
         value={feedbackId}
         onChange={(e)=> setFeedbackId(e.target.value)}
         />
      <button type="submit">Submit</button>
       </form>
-      {/* {error && <p style={{ color: 'red' }}>{error}</p>} */}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
         {feedback && (
         <div>
           <h3>Feedback Details</h3>
