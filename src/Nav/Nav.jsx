@@ -10,7 +10,7 @@ function Nav() {
       <NavLink to="/feedbackList" className="nav-button">
         Feedback List
       </NavLink>
-        <NavLink to="/feedbackById" className="nav-button">
+        <NavLink to="/feedbackByIdPage" className="nav-button">
         Feedback by Id
       </NavLink>
     </div>

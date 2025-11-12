@@ -4,9 +4,9 @@ import './App.css'
 import { Routes, Route } from "react-router-dom";
 
 import SubmitFeedbackPage from './pages/SubmitFeedbackPage/SubmitFeedbackPage'
-import MyFeedbackPage from './pages/MyFeedbackPage/MyFeedbackPage'
+import FeedbackListPage from './pages/FeedbackListPage/FeedbackListPage';
 import Nav from './Nav/Nav'
-import FeedbackById from './FeedbackById/FeedbackById';
+import FeedbackByIdPage from './pages/FeedbackByIdPage/FeedbackByIdPage';
 
 function App() {
 
@@ -22,8 +22,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/feedbackForm" element={<SubmitFeedbackPage />} />
-        <Route path="/feedbackList" element={<MyFeedbackPage />} />
-        <Route path="/feedbackById" element={<FeedbackById />} />
+        <Route path="/feedbackList" element={<FeedbackListPage />} />
+        <Route path="/feedbackByIdPage" element={<FeedbackByIdPage />} />
       </Routes>
     </div>
   )

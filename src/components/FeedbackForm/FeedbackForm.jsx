@@ -6,17 +6,12 @@ import { useFeedback } from '../../Mocking/FeedbackContext';
 
 function FeedbackForm() {
 
-  //? Mock data to be deleted later
-
-  const { addFeedback } = useFeedback();
-
   const [newFeedback, setNewFeedback] = useState({ memberId: '', providerName: '', rating: '', comment: '' })
   const [errors, setErrors] = useState({});
 
-  //!This is for actual functionality
+  //? This is for actual functionality
   // const submitFeedback = async (event) => {
   //   event.preventDefault();
-
 
   //   const validationErrors = validate();
   //   if (Object.keys(validationErrors).length > 0) {
@@ -28,7 +23,6 @@ function FeedbackForm() {
   //     const response = await axios.post("http://localhost:8080/api/v1/feedback", newFeedback);
   //     console.log("Feedback submitted: ", response.data);
       
-  //     //? can maybe refactor without memberId...
   //     setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
   //     setErrors({});
   //   } catch (err) {
@@ -59,6 +53,8 @@ function FeedbackForm() {
     return errs;
   };
 
+  //! code for mocking
+  const { addFeedback } = useFeedback();
   const submitFeedback = (event) => {
     event.preventDefault();
 
@@ -67,7 +63,7 @@ function FeedbackForm() {
       setErrors(validationErrors);
       return; // stop submission
     }
-    // addFeedback(newFeedback); // your global array function
+    addFeedback(newFeedback); // your global array function
     setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
     setErrors({});
   };

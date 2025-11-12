@@ -1,28 +1,45 @@
+import { useFeedback } from '../../Mocking/FeedbackContext';
 import { useState } from 'react';
 import axios from 'axios'
 
 function FeedbackById( ) {
+    const { feedbackList } = useFeedback();
   const [feedbackId, setFeedbackId] = useState('');
   const [feedback, setFeedback] = useState(null);
   const [error, setError] = useState('');
 
-  const handleSearch = async (event) =>{
-    event.preventDefault();
+  // const handleSearch = async (event) =>{
+  //   event.preventDefault();
+  //   setError('');
+  //   setFeedback(null);
+
+  //   try {
+  //     const response = await axios.get(`http://localhost:8080/api/v1/feedback/${id}`);
+  //     setFeedback(response.data);
+  //   } catch (err) {
+  //     if (err.response && err.response.status === 400){
+  //       setError("Feedback not found");
+  //     } else {
+  //       setError("Error fetching feedback");
+  //     }
+  //   }
+  // }
+  
+  //! code for mocking
+    const handleSearch = (e) => {
+    e.preventDefault();
     setError('');
     setFeedback(null);
 
-    try {
-      const response = await axios.get(`http://localhost:8080/api/v1/feedback/${id}`);
-      setFeedback(response.data);
-    } catch (err) {
-      if (err.response && err.response.status === 400){
-        setError("Feedback not found");
-      } else {
-        setError("Error fetching feedback");
-      }
+    const found = feedbackList.find((f) => f.id === feedbackId.trim());
+
+    if (found) {
+      setFeedback(found);
+    } else {
+      setError('Feedback not found.');
     }
-  }
-  
+  };
+
   return (
      <div className='FeedbackById'>
       <h2>Find feedback by ID</h2>
@@ -33,6 +50,7 @@ function FeedbackById( ) {
         value={feedbackId}
         onChange={(e)=> setFeedbackId(e.target.value)}
         />
+     <button type="submit">Submit</button>
       </form>
       {/* {error && <p style={{ color: 'red' }}>{error}</p>} */}
         {feedback && (

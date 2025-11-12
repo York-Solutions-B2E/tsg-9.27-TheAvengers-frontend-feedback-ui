@@ -1,14 +1,13 @@
 import FeedbackList from "../../components/FeedbackList/FeedbackList";
 
-
-function MyFeedbackPage( ) {
+function FeedbackListPage( ) {
   
   return (
-     <div className='MyFeedbackPage'>
+     <div className='FeedbackListPage'>
       Feedback list
       <FeedbackList/>
     </div>
   );
   }
 
-export default MyFeedbackPage;
+export default FeedbackListPage;
