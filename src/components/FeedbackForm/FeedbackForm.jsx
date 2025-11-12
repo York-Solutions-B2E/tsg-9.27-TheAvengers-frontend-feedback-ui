@@ -17,9 +17,20 @@ function FeedbackForm() {
   // const submitFeedback = async (event) => {
   //   event.preventDefault();
 
+
+  //   const validationErrors = validate();
+  //   if (Object.keys(validationErrors).length > 0) {
+  //     setErrors(validationErrors);
+  //     return; // stop submission
+  //   }
+
   //   try {
-  //     const response = await axios.post('/api/feedback', newFeedback);
-  //     console.log("Feedback submitted: ", response.data)
+  //     const response = await axios.post("http://localhost:8080/api/v1/feedback", newFeedback);
+  //     console.log("Feedback submitted: ", response.data);
+      
+  //     //? can maybe refactor without memberId...
+  //     setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
+  //     setErrors({});
   //   } catch (err) {
   //     console.log("Error Submitting Feedback", err)
   //   }
@@ -56,8 +67,7 @@ function FeedbackForm() {
       setErrors(validationErrors);
       return; // stop submission
     }
-
-    addFeedback(newFeedback); // your global array function
+    // addFeedback(newFeedback); // your global array function
     setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
     setErrors({});
   };
