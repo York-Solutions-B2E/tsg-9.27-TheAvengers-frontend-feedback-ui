@@ -8,50 +8,54 @@ function FeedbackById( ) {
   const [feedback, setFeedback] = useState(null);
   const [error, setError] = useState('');
 
-  const handleSearch = async (event) =>{
-    event.preventDefault();
-    setError('');
-    setFeedback(null);
-
-    try {
-      const response = await axios.get(`http://localhost:8080/api/v1/feedback/${id}`);
-      setFeedback(response.data);
-    } catch (err) {
-      if (err.response && err.response.status === 400){
-        setError("Feedback not found");
-      } else {
-        setError("Error fetching feedback");
-      }
-    }
-  }
-  
-  // //! code for mocking
-  // const { feedbackList } = useFeedback();
-  //   const handleSearch = (e) => {
-  //   e.preventDefault();
+  // const handleSearch = async (event) =>{
+  //   event.preventDefault();
   //   setError('');
   //   setFeedback(null);
 
-  //   const found = feedbackList.find((f) => f.id === feedbackId.trim());
-
-  //   if (found) {
-  //     setFeedback(found);
-  //   } else {
-  //     setError('Feedback not found.');
+  //   try {
+  //     const response = await axios.get(`http://localhost:8080/api/v1/feedback/${id}`);
+  //     setFeedback(response.data);
+  //   } catch (err) {
+  //     if (err.response && err.response.status === 400){
+  //       setError("Feedback not found");
+  //     } else {
+  //       setError("Error fetching feedback");
+  //     }
   //   }
-  // };
+  // }
+  
+  // //! code for mocking
+  const { feedbackList } = useFeedback();
+    const handleSearch = (e) => {
+    e.preventDefault();
+    setError('');
+    setFeedback(null);
+
+    const found = feedbackList.find((f) => f.id === feedbackId.trim());
+
+    if (found) {
+      setFeedback(found);
+    } else {
+      setError('Feedback not found.');
+    }
+  };
 
   return (
      <div className='FeedbackById'>
-      <h2>Find feedback by ID</h2>
-      <form onSubmit={handleSearch}>
+      <h2  className="text-3xl font-semibold text-[#16A842] tracking-tight leading-tight"
+      >Find feedback by ID</h2>
+      <form onSubmit={handleSearch}
+      className="max-w-md mx-auto p-6 rounded-2xl shadow-xl space-y-4">
         <input
         type="text" 
         placeholder='Enter a feedback ID'
         value={feedbackId}
         onChange={(e)=> setFeedbackId(e.target.value)}
+        className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-[#5DDE81] focus:ring-2 focus:ring-[#8C1531] focus:outline-none"
         />
-     <button type="submit">Submit</button>
+     <button type="submit"
+     className="w-full bg-[#BD1A41] text-white py-2 rounded-lg font-medium hover:bg-[#741126] transition">Submit</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
         {feedback && (

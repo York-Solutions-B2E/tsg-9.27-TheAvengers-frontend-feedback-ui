@@ -12,7 +12,8 @@ import HomePage from './pages/HomePage/HomePage';
 function App() {
 
   return (
-<div className="min-h-screen bg-gradient-to-br from-white to-[#B7E23F]">
+<div className="min-h-screen bg-gradient-to-br from-white to-[#279CF5]">
+
       <HomePage/>
       <Nav />
       <Routes>
