@@ -1,3 +1,4 @@
+import doctorsImage from '../../assets/doctorsImage.png'
 
 function HomePage( ) {
   
@@ -6,7 +7,7 @@ function HomePage( ) {
       <h1 className="text-4xl font-semibold text-[#BD1A41] tracking-tight leading-tight">
         The Avengers-We fight disease!</h1>
       <img
-        src="src/assets/ChatGPT Image Nov 12, 2025, 08_27_40 AM copy.png"
+        src={doctorsImage}
         alt="Avengers Doctors"
         style={{ width: "400px", height: "auto" }}
         className="mx-auto rounded-4xl"
