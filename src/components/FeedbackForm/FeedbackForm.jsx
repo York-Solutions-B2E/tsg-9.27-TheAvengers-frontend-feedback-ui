@@ -30,28 +30,61 @@ function FeedbackForm() {
   //   }
   // }
 
-  const validate = () => {
-    const errs = {};
+  // const validate = () => {
+  //   const errs = {};
 
-    if (!newFeedback.memberId.trim()) {
-      errs.memberId = 'Member ID is required';
-    } else if (newFeedback.memberId.length > 36) {
-      errs.memberId = 'Member ID cannot exceed 36 characters';
-    } else if (!newFeedback.providerName.trim()) {
-      errs.providerName = "Provider name required.";
-    } else if (newFeedback.providerName.length > 80) {
-      errs.providerName = "Provider name too long.";
-    } else if (!newFeedback.rating > 0) {
-      errs.rating = "Please enter a rating"
-    } else if (newFeedback.rating > 5) {
-      errs.rating = "Rating out of range"
-    } else if (!newFeedback.comment.trim()) {
-      errs.comment = "Please enter your comment"
-    } else if (newFeedback.comment.length > 200) {
-      errs.comment = "Comment length too long"
+  //   if (!newFeedback.memberId.trim()) {
+  //     errs.memberId = 'Member ID is required';
+  //   } else if (newFeedback.memberId.length > 36) {
+  //     errs.memberId = 'Member ID cannot exceed 36 characters';
+  //   } else if (!newFeedback.providerName.trim()) {
+  //     errs.providerName = "Provider name required.";
+  //   } else if (newFeedback.providerName.length > 80) {
+  //     errs.providerName = "Provider name too long.";
+  //   } else if (!newFeedback.rating > 0) {
+  //     errs.rating = "Please enter a rating"
+  //   } else if (newFeedback.rating > 5) {
+  //     errs.rating = "Rating out of range"
+  //   } else if (!newFeedback.comment.trim()) {
+  //     errs.comment = "Please enter your comment"
+  //   } else if (newFeedback.comment.length > 200) {
+  //     errs.comment = "Comment length too long"
+  //   }
+  //   return errs;
+  // };
+
+  const validate = () => {
+  const errs = {};
+
+  const memberIdRegex = /(?=.*[a-zA-Z])^[a-zA-Z0-9-]{3,36}$/;
+  const providerNameRegex = /^[a-zA-Z][a-zA-Z\s.-]{1,78}[a-zA-Z]$/;
+  const ratingRegex = /^[1-5]$/;
+
+  if (!newFeedback.memberId.trim()) {
+    errs.memberId = "Member ID is required.";
+  } else if (!memberIdRegex.test(newFeedback.memberId)) {
+    errs.memberId = "Invalid Member ID format. Use 3–36 letters/numbers, at least one letter.";
+  }
+
+  if (!newFeedback.providerName.trim()) {
+    errs.providerName = "Provider name is required.";
+  } else if (!providerNameRegex.test(newFeedback.providerName)) {
+    errs.providerName = "Invalid Provider Name format (letters, spaces, periods, hyphens only).";
+  }
+
+  if (!ratingRegex.test(newFeedback.rating)) {
+      errs.rating = "Rating must be between 1 and 5.";
     }
-    return errs;
-  };
+
+  if (!newFeedback.comment.trim()) {
+    errs.comment = "Please enter a comment.";
+  } else if (newFeedback.comment.length > 200) {
+    errs.comment = "Comment too long (max 200 characters).";
+  }
+
+  return errs;
+};
+
 
   //! code for mocking
   const { addFeedback } = useFeedback();
@@ -64,7 +97,7 @@ function FeedbackForm() {
       return; // stop submission
     }
     addFeedback(newFeedback); // your global array function
-    setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
+    setNewFeedback({ memberId: '', providerName: '', rating: '', comment: '' });
     setErrors({});
   };
 
@@ -91,12 +124,11 @@ function FeedbackForm() {
 
         />
         <input
-          type='number'
+          type='text'
           placeholder='Rating from 1-5'
-          value={newFeedback.rating}
-          onChange={(e) => setNewFeedback({ ...newFeedback, rating: e.target.value ? Number(e.target.value) : "" })}
+          value={newFeedback.rating}         
+          onChange={(e) => setNewFeedback({ ...newFeedback, rating: e.target.value })}          
           className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-[#5DDE81] focus:ring-2 focus:ring-[#8C1531] focus:outline-none"
-
         />
         <input
           type='text'
