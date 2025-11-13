@@ -12,7 +12,7 @@ import HomePage from './pages/HomePage/HomePage';
 function App() {
 
   return (
-    <div className='_template'>
+<div className="min-h-screen bg-gradient-to-br from-white to-[#B7E23F]">
       <HomePage/>
       <Nav />
       <Routes>
