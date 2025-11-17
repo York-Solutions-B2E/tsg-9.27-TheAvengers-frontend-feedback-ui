@@ -76,10 +76,7 @@ function FeedbackForm() {
       errs.rating = "Rating must be between 1 and 5.";
     }
 
-  if (!newFeedback.comment.trim()) {
-    errs.comment = "Please enter a comment.";
-  } 
-  else if (newFeedback.comment.length > 200) {
+  if (newFeedback.comment.length > 200) {
     errs.comment = "Comment too long (max 200 characters).";
   }
 
@@ -100,6 +97,7 @@ function FeedbackForm() {
     addFeedback(newFeedback); // your global array function
     setNewFeedback({ memberId: '', providerName: '', rating: '', comment: '' });
     setErrors({});
+    alert("Thank you for feedback")
   };
 
 
@@ -153,4 +151,4 @@ function FeedbackForm() {
   );
 }
 
-export default FeedbackForm; 3
+export default FeedbackForm;
