@@ -78,7 +78,8 @@ function FeedbackForm() {
 
   if (!newFeedback.comment.trim()) {
     errs.comment = "Please enter a comment.";
-  } else if (newFeedback.comment.length > 200) {
+  } 
+  else if (newFeedback.comment.length > 200) {
     errs.comment = "Comment too long (max 200 characters).";
   }
 
@@ -132,7 +133,7 @@ function FeedbackForm() {
         />
         <input
           type='text'
-          placeholder='Comment'
+          placeholder='Comment(optional)'
           value={newFeedback.comment}
           onChange={(e) => setNewFeedback({ ...newFeedback, comment: e.target.value })}
           className="w-full px-4 py-2 rounded-lg border border-gray-300 bg-[#5DDE81] focus:ring-2 focus:ring-[#8C1531] focus:outline-none"
