@@ -25,33 +25,11 @@ function FeedbackForm() {
 
   //     setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
   //     setErrors({});
+//       alert("Thank you for feedback");
   //   } catch (err) {
   //     console.log("Error Submitting Feedback", err)
   //   }
   // }
-
-  // const validate = () => {
-  //   const errs = {};
-
-  //   if (!newFeedback.memberId.trim()) {
-  //     errs.memberId = 'Member ID is required';
-  //   } else if (newFeedback.memberId.length > 36) {
-  //     errs.memberId = 'Member ID cannot exceed 36 characters';
-  //   } else if (!newFeedback.providerName.trim()) {
-  //     errs.providerName = "Provider name required.";
-  //   } else if (newFeedback.providerName.length > 80) {
-  //     errs.providerName = "Provider name too long.";
-  //   } else if (!newFeedback.rating > 0) {
-  //     errs.rating = "Please enter a rating"
-  //   } else if (newFeedback.rating > 5) {
-  //     errs.rating = "Rating out of range"
-  //   } else if (!newFeedback.comment.trim()) {
-  //     errs.comment = "Please enter your comment"
-  //   } else if (newFeedback.comment.length > 200) {
-  //     errs.comment = "Comment length too long"
-  //   }
-  //   return errs;
-  // };
 
   const validate = () => {
   const errs = {};
@@ -94,10 +72,10 @@ function FeedbackForm() {
       setErrors(validationErrors);
       return; // stop submission
     }
-    addFeedback(newFeedback); // your global array function
+    addFeedback(newFeedback);
     setNewFeedback({ memberId: '', providerName: '', rating: '', comment: '' });
     setErrors({});
-    alert("Thank you for feedback")
+    alert("Thank you for feedback");
   };
 
 
