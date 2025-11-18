@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-// import axios from 'axios'
+import axios from 'axios'
 
-import { useFeedback } from '../../Mocking/FeedbackContext';
+// import { useFeedback } from '../../Mocking/FeedbackContext';
 
 function FeedbackForm() {
 
@@ -10,26 +10,28 @@ function FeedbackForm() {
   const [errors, setErrors] = useState({});
 
   //? This is for actual functionality
-  // const submitFeedback = async (event) => {
-  //   event.preventDefault();
+  const submitFeedback = async (event) => {
+    event.preventDefault();
 
-  //   const validationErrors = validate();
-  //   if (Object.keys(validationErrors).length > 0) {
-  //     setErrors(validationErrors);
-  //     return; // stop submission
-  //   }
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return; // stop submission
+    }
 
-  //   try {
-  //     const response = await axios.post("http://localhost:8080/api/v1/feedback", newFeedback);
-  //     console.log("Feedback submitted: ", response.data);
+    try {
+      const response = await axios.post("http://localhost:8080/api/v1/feedback", newFeedback)
 
-  //     setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
-  //     setErrors({});
-//       alert("Thank you for feedback");
-  //   } catch (err) {
-  //     console.log("Error Submitting Feedback", err)
-  //   }
-  // }
+      console.log("Feedback submitted: ", response.data);
+
+      setNewFeedback({ memberId: '', providerName: '', rating: 0, comment: '' });
+      console.log("this is new feedback", newFeedback)
+      setErrors({});
+      alert("Thank you for feedback");
+    } catch (err) {
+      console.log("Error Submitting Feedback", err)
+    }
+  }
 
   const validate = () => {
   const errs = {};
@@ -62,21 +64,21 @@ function FeedbackForm() {
 };
 
 
-  //! code for mocking
-  const { addFeedback } = useFeedback();
-  const submitFeedback = (event) => {
-    event.preventDefault();
+  // //! code for mocking
+  // const { addFeedback } = useFeedback();
+  // const submitFeedback = (event) => {
+  //   event.preventDefault();
 
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return; // stop submission
-    }
-    addFeedback(newFeedback);
-    setNewFeedback({ memberId: '', providerName: '', rating: '', comment: '' });
-    setErrors({});
-    alert("Thank you for feedback");
-  };
+  //   const validationErrors = validate();
+  //   if (Object.keys(validationErrors).length > 0) {
+  //     setErrors(validationErrors);
+  //     return; // stop submission
+  //   }
+  //   addFeedback(newFeedback);
+  //   setNewFeedback({ memberId: '', providerName: '', rating: '', comment: '' });
+  //   setErrors({});
+  //   alert("Thank you for feedback");
+  // };
 
 
   return (

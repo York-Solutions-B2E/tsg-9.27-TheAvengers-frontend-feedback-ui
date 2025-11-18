@@ -7,42 +7,42 @@ function FeedbackByMemberId() {
   const [feedbackList, setFeedbackList] = useState([]);
   const [error, setError] = useState('');
 
-  // const handleSearch = async (event) => {
-  //   event.preventDefault();
-  //   setError('');
-  //   setFeedbackList([]);
-
-  //   try {
-  //     const response = await axios.get(`http://localhost:8080/api/v1/feedback?memberId=${memberId}`);
-  //     if (response.data.length === 0) {
-  //       setError('No feedback found for this member.');
-  //     } else {
-  //       setFeedbackList(response.data);
-  //     }
-  //   } catch (err) {
-  //     if (err.response && err.response.status === 400) {
-  //       setError('Invalid member ID.');
-  //     } else {
-  //       setError('Error fetching feedback.');
-  //     }
-  //   }
-  // };
- 
-  //! code for mocking
-  const { getFeedbackByMemberId } = useFeedback();
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
     setError('');
     setFeedbackList([]);
 
-    const results = getFeedbackByMemberId(memberId);
-
-    if (results.length === 0) {
-      setError('No feedback found for this member.');
-    } else {
-      setFeedbackList(results);
+    try {
+      const response = await axios.get(`http://localhost:8080/api/v1/feedback?memberId=${memberId}`);
+      if (response.data.length === 0) {
+        setError('No feedback found for this member.');
+      } else {
+        setFeedbackList(response.data);
+      }
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        setError('Invalid member ID.');
+      } else {
+        setError('Error fetching feedback.');
+      }
     }
   };
+ 
+  // //! code for mocking
+  // const { getFeedbackByMemberId } = useFeedback();
+  // const handleSearch = (event) => {
+  //   event.preventDefault();
+  //   setError('');
+  //   setFeedbackList([]);
+
+  //   const results = getFeedbackByMemberId(memberId);
+
+  //   if (results.length === 0) {
+  //     setError('No feedback found for this member.');
+  //   } else {
+  //     setFeedbackList(results);
+  //   }
+  // };
 
   return (
     <div className='FeedbackByMemberId'>

@@ -8,38 +8,38 @@ function FeedbackById( ) {
   const [feedback, setFeedback] = useState(null);
   const [error, setError] = useState('');
 
-  // const handleSearch = async (event) =>{
-  //   event.preventDefault();
-  //   setError('');
-  //   setFeedback(null);
-
-  //   try {
-  //     const response = await axios.get(`http://localhost:8080/api/v1/feedback/${id}`);
-  //     setFeedback(response.data);
-  //   } catch (err) {
-  //     if (err.response && err.response.status === 400){
-  //       setError("Feedback not found");
-  //     } else {
-  //       setError("Error fetching feedback");
-  //     }
-  //   }
-  // }
-  
-  // //! code for mocking
-  const { feedbackList } = useFeedback();
-    const handleSearch = (e) => {
-    e.preventDefault();
+  const handleSearch = async (event) =>{
+    event.preventDefault();
     setError('');
     setFeedback(null);
 
-    const found = feedbackList.find((f) => f.id === feedbackId.trim());
-
-    if (found) {
-      setFeedback(found);
-    } else {
-      setError('Feedback not found.');
+    try {
+      const response = await axios.get(`http://localhost:8080/api/v1/feedback/${id}`);
+      setFeedback(response.data);
+    } catch (err) {
+      if (err.response && err.response.status === 400){
+        setError("Feedback not found");
+      } else {
+        setError("Error fetching feedback");
+      }
     }
-  };
+  }
+  
+  // // //! code for mocking
+  // const { feedbackList } = useFeedback();
+  //   const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   setError('');
+  //   setFeedback(null);
+
+  //   const found = feedbackList.find((f) => f.id === feedbackId.trim());
+
+  //   if (found) {
+  //     setFeedback(found);
+  //   } else {
+  //     setError('Feedback not found.');
+  //   }
+  // };
 
   return (
      <div className='FeedbackById'>

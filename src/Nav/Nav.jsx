@@ -5,6 +5,9 @@ function Nav() {
 
   return (
     <div className='Nav'>
+        <NavLink to="/" className="nav-button">
+        Home
+      </NavLink>
       <NavLink to="/feedbackForm" className="nav-button">
         Feedback Form 
       </NavLink>
