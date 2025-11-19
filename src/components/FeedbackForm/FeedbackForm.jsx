@@ -16,7 +16,7 @@ function FeedbackForm() {
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      return; // stop submission
+      return; 
     }
 
     try {

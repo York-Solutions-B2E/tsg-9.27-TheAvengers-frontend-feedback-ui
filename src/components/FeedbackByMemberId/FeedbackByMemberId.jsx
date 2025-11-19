@@ -28,7 +28,7 @@ function FeedbackByMemberId() {
     }
   };
  
-  // //! code for mocking
+  // // //! code for mocking
   // const { getFeedbackByMemberId } = useFeedback();
   // const handleSearch = (event) => {
   //   event.preventDefault();
@@ -64,21 +64,27 @@ function FeedbackByMemberId() {
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {feedbackList.length > 0 && (
-        <div>
-          <h3>Feedback Results</h3>
-          {feedbackList.map((fb) => (
-            <div>
-              <p><strong>ID:</strong> {fb.id}</p>
-              <p><strong>Member ID:</strong> {fb.memberId}</p>
-              <p><strong>Provider Name:</strong> {fb.providerName}</p>
-              <p><strong>Rating:</strong> {fb.rating}</p>
-              <p><strong>Comment:</strong> {fb.comment}</p>
-              <p><strong>Submitted At:</strong> {fb.submittedAt}</p>
-            </div>
-          ))}
-        </div>
-      )}
+{feedbackList.length > 0 && (
+  <div className="mt-8">
+    <h3 className="text-3xl font-semibold text-[#16A842] mb-4">Feedback Results</h3>
+
+    {feedbackList.map((feedback) => (
+     <div
+  key={feedback.id}
+className="border border-gray-300 rounded-xl p-4 mb-6 bg-[#5DDE81] shadow-sm w-[400px] mx-auto"
+>
+
+        <p><strong>ID:</strong> {feedback.id}</p>
+        <p><strong>Member ID:</strong> {feedback.memberId}</p>
+        <p><strong>Provider Name:</strong> {feedback.providerName}</p>
+        <p><strong>Rating:</strong> {feedback.rating}</p>
+        <p><strong>Comment:</strong> {feedback.comment}</p>
+        <p><strong>Submitted At: </strong>{new Date(feedback.submittedAt).toLocaleString()}</p>
+      </div>
+    ))}
+  </div>
+)}
+
     </div>
   );
 }

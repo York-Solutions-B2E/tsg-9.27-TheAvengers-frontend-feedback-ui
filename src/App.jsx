@@ -17,7 +17,7 @@ function App() {
       <HomePage/>
       <Nav />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" />
         <Route path="/feedbackForm" element={<SubmitFeedbackPage />} />
         <Route path="/feedbackList" element={<FeedbackListPage />} />
         <Route path="/findFeedback" element={<FindFeedbackPage />} />

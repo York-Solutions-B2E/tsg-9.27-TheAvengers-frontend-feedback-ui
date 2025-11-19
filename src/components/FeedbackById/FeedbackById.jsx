@@ -1,4 +1,6 @@
+import { useFeedback } from '../../Mocking/FeedbackContext';
 import { useState } from 'react';
+
 import axios from 'axios'
 
 function FeedbackById( ) {
@@ -26,6 +28,7 @@ const handleSearch = async (event) => {
 
   
   // // //! code for mocking
+
   // const { feedbackList } = useFeedback();
   //   const handleSearch = (e) => {
   //   e.preventDefault();
@@ -58,17 +61,28 @@ const handleSearch = async (event) => {
      className="w-full bg-[#BD1A41] text-white py-2 rounded-lg font-medium hover:bg-[#741126] transition">Submit</button>
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-        {feedback && (
-        <div>
-          <h3>Feedback Details</h3>
-          <p><strong>ID:</strong> {feedback.id}</p>
-          <p><strong>Member ID:</strong> {feedback.memberId}</p>
-          <p><strong>Provider Name:</strong> {feedback.providerName}</p>
-          <p><strong>Rating:</strong> {feedback.rating}</p>
-          <p><strong>Comment:</strong> {feedback.comment}</p>
-          <p><strong>Submitted At:</strong> {feedback.submittedAt}</p>
-        </div>
-      )}
+{feedback && (
+  <div className="mt-8">
+    <h3 className="text-3xl font-semibold text-[#16A842] mb-4">
+      Feedback Details
+    </h3>
+
+    <div
+      className="border border-gray-300 rounded-xl p-4 mb-6 bg-[#5DDE81] shadow-sm w-[400px] mx-auto"
+    >
+      <p><strong>ID:</strong> {feedback.id}</p>
+      <p><strong>Member ID:</strong> {feedback.memberId}</p>
+      <p><strong>Provider Name:</strong> {feedback.providerName}</p>
+      <p><strong>Rating:</strong> {feedback.rating}</p>
+      <p><strong>Comment:</strong> {feedback.comment}</p>
+      <p>
+        <strong>Submitted At:</strong>{" "}
+        {new Date(feedback.submittedAt).toLocaleString()}
+      </p>
+    </div>
+  </div>
+)}
+
     </div>
   );
   }
