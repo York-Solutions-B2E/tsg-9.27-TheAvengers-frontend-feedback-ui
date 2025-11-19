@@ -1,8 +1,5 @@
-
 import { useState } from 'react';
 import axios from 'axios'
-
-// import { useFeedback } from '../../Mocking/FeedbackContext';
 
 function FeedbackForm() {
 
@@ -62,24 +59,6 @@ function FeedbackForm() {
 
   return errs;
 };
-
-
-  // //! code for mocking
-  // const { addFeedback } = useFeedback();
-  // const submitFeedback = (event) => {
-  //   event.preventDefault();
-
-  //   const validationErrors = validate();
-  //   if (Object.keys(validationErrors).length > 0) {
-  //     setErrors(validationErrors);
-  //     return; // stop submission
-  //   }
-  //   addFeedback(newFeedback);
-  //   setNewFeedback({ memberId: '', providerName: '', rating: '', comment: '' });
-  //   setErrors({});
-  //   alert("Thank you for feedback");
-  // };
-
 
   return (
     <div className='FeedbackForm'>

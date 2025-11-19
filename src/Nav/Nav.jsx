@@ -5,18 +5,15 @@ function Nav() {
 
   return (
     <div className='Nav'>
-        <NavLink to="/" className="nav-button">
+      <NavLink to="/" className="nav-button">
         Home
       </NavLink>
       <NavLink to="/feedbackForm" className="nav-button">
-        Feedback Form 
+        Feedback Form
       </NavLink>
-      <NavLink to="/feedbackList" className="nav-button">
-        Feedback List
-      </NavLink>
-        <NavLink to="/findFeedback" className="nav-button">
+      <NavLink to="/findFeedback" className="nav-button">
         Find feedback
-      </NavLink>   
+      </NavLink>
     </div>
   );
 }

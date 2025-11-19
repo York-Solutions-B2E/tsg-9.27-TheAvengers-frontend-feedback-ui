@@ -4,7 +4,6 @@ import './App.css'
 import { Routes, Route } from "react-router-dom";
 
 import SubmitFeedbackPage from './pages/SubmitFeedbackPage/SubmitFeedbackPage'
-import FeedbackListPage from './pages/FeedbackListPage/FeedbackListPage';
 import Nav from './Nav/Nav'
 import FindFeedbackPage from './pages/FindFeedbackPage/FindFeedbackPage';
 import HomePage from './pages/HomePage/HomePage';
@@ -19,7 +18,6 @@ function App() {
       <Routes>
         <Route path="/" />
         <Route path="/feedbackForm" element={<SubmitFeedbackPage />} />
-        <Route path="/feedbackList" element={<FeedbackListPage />} />
         <Route path="/findFeedback" element={<FindFeedbackPage />} />
       </Routes>
     </div>

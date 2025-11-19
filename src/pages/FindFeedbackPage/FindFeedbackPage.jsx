@@ -1,6 +1,7 @@
+import './FindFeedbackPage.css'
+
 import FeedbackById from "../../components/FeedbackById/FeedbackById";
 import FeedbackByMemberId from "../../components/FeedbackByMemberId/FeedbackByMemberId";
-import './FindFeedbackPage.css'
 
 function FindFeedbackPage( ) {
   

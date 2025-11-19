@@ -1,4 +1,3 @@
-import { useFeedback } from '../../Mocking/FeedbackContext';
 import { useState } from 'react';
 
 import axios from 'axios'
@@ -26,23 +25,6 @@ const handleSearch = async (event) => {
   }
 };
 
-  
-  // // //! code for mocking
-
-  // const { feedbackList } = useFeedback();
-  //   const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   setError('');
-  //   setFeedback(null);
-
-  //   const found = feedbackList.find((f) => f.id === feedbackId.trim());
-
-  //   if (found) {
-  //     setFeedback(found);
-  //   } else {
-  //     setError('Feedback not found.');
-  //   }
-  // };
 
   return (
      <div className='FeedbackById'>
